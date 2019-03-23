@@ -8,12 +8,12 @@
     </div>
     <div class="mineIndex_div3">
       <ul class="mineIndex_ul1">
-        <li class="mineIndex_li1" @click="towodexinxi">
+        <li class="mineIndex_li1" @click="towodexinxi"> 
           <span class="mineIndex_span3">我的信息</span>
           <img class="mineIndex_img" src="../../images/icon/mine-right-btn.png" alt="">
         </li>
         <li class="mineIndex_li1" @click="toyunwuirenyuan">
-          <span class="mineIndex_span3">运维人员</span>
+          <span class="mineIndex_span3">运维人员</span> 
           <img class="mineIndex_img" src="../../images/icon/mine-right-btn.png" alt="">
         </li>
       </ul>
