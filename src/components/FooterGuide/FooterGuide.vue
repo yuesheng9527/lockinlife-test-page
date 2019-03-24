@@ -1,50 +1,50 @@
 <template>
   <div class="bottom_div1">
     <div class="bottom_div2" @click="dianji1">
-      <router-link to="/gondan">
-      <div class="bottom_div6" v-show="a===1">
-        <img src="../../images/1B9BFF/wode1.png">
-      </div>
-      <div class="bottom_div6"  v-show="a===2">
-        <img src="../../images/666/gongdan.png">
-      </div>
-      <div class="bottom_div7" :class="a===1?'fontColor':''">工单</div>
+      <router-link :to="($store.state.a===1||a===2)?'/gondan':''">      
+        <div class="bottom_div6" v-show="a===1">
+          <img src="../../images/1B9BFF/wode1.png">
+        </div>
+        <div class="bottom_div6" v-show="a===2">
+          <img src="../../images/666/gongdan.png">
+        </div>
+        <div class="bottom_div7" :class="a===1?'fontColor':''">工单</div>
       </router-link>
     </div>
 
     <div class="bottom_div3" @click="dianji2">
-      <router-link to="/arealist">
-      <div class="bottom_div8"  v-show="b===1">
-        <img src="../../images/1B9BFF/wode3.png">
-      </div>
-      <div class="bottom_div8"  v-show="b===2">
-        <img src="../../images/666/xunjianguiji.png">
-      </div>
-      <div class="bottom_div9" :class="b===1?'fontColor':''">巡检</div>
+      <router-link :to="($store.state.b===1||b===2)?'/arealist':''">
+        <div class="bottom_div8" v-show="b===1">
+          <img src="../../images/1B9BFF/wode3.png">
+        </div>
+        <div class="bottom_div8" v-show="b===2">
+          <img src="../../images/666/xunjianguiji.png">
+        </div>
+        <div class="bottom_div9" :class="b===1?'fontColor':''">巡检</div>
       </router-link>
     </div>
 
     <div class="bottom_div4" @click="dianji3">
       <router-link to="/statisticsindex">
-      <div class="bottom_div10"  v-show="c===1">
-        <img src="../../images/1B9BFF/wode4.png">
-      </div>
-      <div class="bottom_div10"  v-show="c===2">
-        <img src="../../images/666/xiazai7.png">
-      </div>
-      <div class="bottom_div11" :class="c===1?'fontColor':''">统计</div>
+        <div class="bottom_div10" v-show="c===1">
+          <img src="../../images/1B9BFF/wode4.png">
+        </div>
+        <div class="bottom_div10" v-show="c===2">
+          <img src="../../images/666/xiazai7.png">
+        </div>
+        <div class="bottom_div11" :class="c===1?'fontColor':''">统计</div>
       </router-link>
     </div>
 
     <div class="bottom_div5" @click="dianji4">
       <router-link to="/mineindex">
-      <div class="bottom_div12"  v-show="d===1">
-        <img src="../../images/1B9BFF/wode2.png">
-      </div>
-      <div class="bottom_div12"  v-show="d===2">
-        <img src="../../images/666/wode_1.png">
-      </div>
-      <div class="bottom_div13" :class="d===1?'fontColor':''">我的</div>
+        <div class="bottom_div12" v-show="d===1">
+          <img src="../../images/1B9BFF/wode2.png">
+        </div>
+        <div class="bottom_div12" v-show="d===2">
+          <img src="../../images/666/wode_1.png">
+        </div>
+        <div class="bottom_div13" :class="d===1?'fontColor':''">我的</div>
       </router-link>
     </div>
   </div>
@@ -113,7 +113,6 @@ export default {
   color: #666;
   font-size: 15px;
   font-weight: 600;
-  
 }
 img {
   width: 24.5%;

@@ -7,12 +7,14 @@
     </div>
 
     <div class="gondan_div3">
-      <div class="gondan_div4" :class="a===1?'borderbottom1':''" @click="gondandianji1">待处理</div>
-      <div class="gondan_div4" :class="a===2?'borderbottom1':''" @click="gondandianji2">已处理</div>
+      <div class="gondan_div4" :class="$store.state.a===1?'borderbottom1':''" @click="gondandianji1">待处理</div>
+      <div class="gondan_div4" :class="$store.state.a===2?'borderbottom1':''" @click="gondandianji2">已处理</div>
     </div>
 
     <van-pull-refresh class="gondan_div5" v-model="isLoading" @refresh="onRefresh">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </van-pull-refresh>
   </div>
 </template>
@@ -21,30 +23,36 @@
 export default {
   data() {
     return {
-      a: 1,
       isLoading: false
     };
   },
   created() {},
   methods: {
     gondandianji1() {
-      if (this.a !== 1) {
-        this.a = 1;
+      if (this.$store.state.a !== 1) {
+        this.$store.state.a = 1;
       }
       this.$router.push({ path: "/gondan/gondandaichuli" });
     },
     gondandianji2() {
-      if (this.a !== 2) {
-        this.a = 2;
+      if (this.$store.state.a !== 2) {
+        this.$store.state.a = 2;
       }
       this.$router.push({ path: "/gondan/gondanyichuli" });
     },
+    huanchun(){
+      if(this.$store.state.a===1){this.$router.push({ path: "/gondan/gondandaichuli" });};
+      if(this.$store.state.a===2){this.$router.push({ path: "/gondan/gondanyichuli" });}
+    },
     onRefresh() {
       setTimeout(() => {
-        this.$toast({message:"刷新成功",duration:800});
+        this.$toast({ message: "刷新成功", duration: 800 });
         this.isLoading = false;
       }, 500);
     }
+  },
+  activated(){
+    this.huanchun();
   }
 };
 </script>

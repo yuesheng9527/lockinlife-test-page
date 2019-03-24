@@ -2,7 +2,9 @@
   <div class="app2">
     <div class="div1">
       <transition>
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </transition>
     </div>
     <div class="div2">
@@ -16,13 +18,10 @@ import FooterGuide from "./components/FooterGuide/FooterGuide.vue";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
 
-  methods: {
-
-  },
+  methods: {},
   components: {
     FooterGuide
   }
@@ -31,7 +30,7 @@ export default {
 
 <style>
 .app2 {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

@@ -7,12 +7,14 @@
     </div>
 
     <div class="arealist_div3">
-      <div class="arealist_div4" :class="b===1?'borderbottom2':''" @click="arealistdianji1">待巡检</div>
-      <div class="arealist_div4" :class="b===2?'borderbottom2':''" @click="arealistdianji2">已巡检</div>
+      <div class="arealist_div4" :class="$store.state.b===1?'borderbottom2':''" @click="arealistdianji1">待巡检</div>
+      <div class="arealist_div4" :class="$store.state.b===2?'borderbottom2':''" @click="arealistdianji2">已巡检</div>
     </div>
 
     <van-pull-refresh class="arealist_div5" v-model="isLoading" @refresh="onRefresh">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </van-pull-refresh>
   </div>
 </template>
@@ -21,29 +23,35 @@
 export default {
   data() {
     return {
-      b: 1,
       isLoading: false
     };
   },
   methods: {
     arealistdianji1() {
-      if (this.b !== 1) {
-        this.b = 1;
+      if (this.$store.state.b !== 1) {
+        this.$store.state.b = 1;
       }
-      this.$router.push({path: '/arealist/arealistdaixunjian'})
+      this.$router.push({ path: "/arealist/arealistdaixunjian" });
     },
     arealistdianji2() {
-      if (this.b !== 2) {
-        this.b = 2;
+      if (this.$store.state.b !== 2) {
+        this.$store.state.b = 2;
       }
-      this.$router.push({path: '/arealist/arealistyixunjian'})
+      this.$router.push({ path: "/arealist/arealistyixunjian" });
+    },
+    huanchun2(){
+      if(this.$store.state.b===1){this.$router.push({ path: "/arealist/arealistdaixunjian" });};
+      if(this.$store.state.b===2){this.$router.push({ path: "/arealist/arealistyixunjian" });}
     },
     onRefresh() {
       setTimeout(() => {
-        this.$toast({message:"刷新成功",duration:800});
+        this.$toast({ message: "刷新成功", duration: 800 });
         this.isLoading = false;
       }, 500);
     }
+  },
+  activated(){
+    this.huanchun2();
   }
 };
 </script>
@@ -73,7 +81,7 @@ export default {
   color: rgba(102, 102, 102, 0.952);
   margin: 0 17.5%;
 }
-.arealist_div5{
+.arealist_div5 {
   height: 81%;
 }
 .borderbottom2 {
