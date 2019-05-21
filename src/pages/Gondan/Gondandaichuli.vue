@@ -12,14 +12,14 @@ export default {
     };
   },
   created() {
-    this.$axios
-      .get(`/lockoutController.do?app/getOutListByUpdUserid&state=0`)
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // this.$axios
+    //   .get(`/lockoutController.do?app/getOutListByUpdUserid&state=0`)
+    //   .then(function(response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   },
   methods: {
 
